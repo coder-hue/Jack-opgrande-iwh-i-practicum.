@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // * Please DO NOT INCLUDE the private app access token in your repo. Don't do this practicum in your normal account.
-const PRIVATE_APP_ACCESS = '';
+const PRIVATE_APP_ACCESS = 'pat-na1-32a21ddf-2af7-4fce-8908-3e2c90fcbba3';
 
 // TODO: ROUTE 1 - Create a new app.get route for the homepage to call your custom object data. Pass this data along to the front-end and create a new pug template in the views folder.
 
@@ -18,7 +18,8 @@ app.get('/', async (req, res) => {
     try {
         const response = await axios.get('https://api.hubapi.com/crm/v3/objects/games', {
             headers: {
-                Authorization: `Bearer ${PRIVATE_APP_ACCESS}`
+                Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
+                'Content-Type': 'application/json'
             }
         });
         const games = response.data.results;
