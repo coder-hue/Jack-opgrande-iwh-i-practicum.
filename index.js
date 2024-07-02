@@ -16,18 +16,19 @@ const PRIVATE_APP_ACCESS = '4fa2acef-dbb9-479b-85f5-c1692a746fe1';
 
 app.get('/', async (req, res) => {
     try {
-        const response = await axios.get('https://api.hubapi.com/crm/v3/objects/games')
-            Headers: {
-                authorization: 'PRIVATE_APP_ACCESS'
+        const response = await axios.get('https://api.hubapi.com/crm/v3/objects/games', {
+            headers: {
+                Authorization: `Bearer ${PRIVATE_APP_ACCESS}`
             }
-    
-        const games = express.response.addTrailers.results:
-        res.render('homepage', { title: 'Games' games });
-        } catch (error) {
-            console.error(error);
-            res.status(500).send('error fetching games')
-        }
+        });
+        const games = response.data.results;
+        res.render('homepage', { title: 'Games', games });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error fetching games');
+    }
 });
+
 
 // TODO: ROUTE 2 - Create a new app.get route for the form to create or update new custom object data. Send this data along in the next route.
 
