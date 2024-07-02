@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title= Games
+  body
+    h1= Games
+    a(href='/update-cobj') Add to this table
+    table
+      tr
+        th Name
+        th Type
+        th Maker
+      each game in games
+        tr
+          td= game.properties.name
+          td= game.properties.type
+          td= game.properties.maker
